@@ -27,14 +27,18 @@ int main(int argc, char **argv) {
 
     // allocate required memory to store data received from modbus device
     allocateMemory(&smallArray, &bigArray);
+
     // open connection to the modbus device
     openModbusConnection(&ctx, &smallArray, &bigArray);
+
+    modbus_set_response_timeout(ctx, 0, 500000);
+    modbus_set_byte_timeout(ctx, 0, 0),
 
     modbus_set_slave(ctx, 1);
 
     switch (globalArgs.function) {
     case 0:
-        rc = modbus_report_slave_id(ctx, smallArray);
+        rc = modbus_report_slave_id(ctx, 10, smallArray);
         break;
     case 1: // read coil status
         rc = modbus_read_bits(ctx, globalArgs.address, globalArgs.size, smallArray);

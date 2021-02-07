@@ -4,6 +4,10 @@
 #
 # (c) by Matthias Fechner <idefix@fechner.net>
 #
+
+use FindBin 1.51 qw( $RealBin );
+use lib $RealBin;
+
 use strict;
 use DBI;
 use Data::Dumper;
