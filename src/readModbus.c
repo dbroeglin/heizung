@@ -31,8 +31,8 @@ int main(int argc, char **argv) {
     // open connection to the modbus device
     openModbusConnection(&ctx, &smallArray, &bigArray);
 
-    modbus_set_response_timeout(ctx, 0, 500000);
-    modbus_set_byte_timeout(ctx, 0, 0),
+    modbus_set_response_timeout(ctx, 1, 0);
+    modbus_set_byte_timeout(ctx, 0, 0);
 
     modbus_set_slave(ctx, 1);
 
